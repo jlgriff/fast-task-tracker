@@ -1,0 +1,12 @@
+.task {
+    display: flex;
+    flex-direction: row;
+}
+
+.push {
+    margin-left: auto;
+}
+
+.icon {
+    height: 2em;
+}
