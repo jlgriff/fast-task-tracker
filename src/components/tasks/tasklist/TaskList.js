@@ -14,7 +14,9 @@ const TaskList = props => {
                     onComplete={props.onComplete}
                     title={task.title}
                     description={task.description}
-                    priority={task.priority}>
+                    priority={task.priority}
+                    completed={task.completed}
+                    timestamp={task.timestamp}>
                 </Task>
             ))}
         </ul>

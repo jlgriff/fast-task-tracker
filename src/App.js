@@ -4,23 +4,17 @@ import TaskList from './components/tasks/tasklist/TaskList';
 import TaskInput from './components/tasks/input/TaskInput';
 import './App.module.css';
 
-export const PRIORITIES = {veryLow: "Very Low", low: "Low", average: "Average", high: "High", veryHigh: "Very High"}
+export const PRIORITIES = {veryHigh: "Very High", high: "High", average: "Average", low: "Low", veryLow: "Very Low"}
 export const STORAGE_TASKS_KEY = "tasks";
 
 const App = () => {
 
     const getValueFromStorage = (key) => {
         const value = window.sessionStorage.getItem(key);
-        if (value === null) {
-            return [];
-        } else {
-            return JSON.parse(value);
-        }
+        return value === null ? [] : JSON.parse(value);
     }
 
-    const saveValueInStorage = (key, value) => {
-        window.sessionStorage.setItem(key, value);
-    }
+    const saveValueInStorage = (key, value) => window.sessionStorage.setItem(key, value);
 
     const [tasks, setTasks] = useState(getValueFromStorage(STORAGE_TASKS_KEY))
 
@@ -28,15 +22,25 @@ const App = () => {
         saveValueInStorage(STORAGE_TASKS_KEY, JSON.stringify(tasks));
     }, [tasks]);
 
+    const sortTasks = tasks => {
+        tasks.sort((a, b) => a.completed === b.completed
+            ? b.timestamp - a.timestamp
+            : a.completed > b.completed ? 1 : -1
+        );
+    }
+
     const addTaskHandler = (title, description, priority) => {
         const updatedTasks = [...tasks].concat(
             {
                 title: title,
                 description: description,
                 priority: priority,
+                completed: false,
+                timestamp: Date.now(),
                 id: Math.random().toString()
             }
         );
+        sortTasks(updatedTasks);
         setTasks(updatedTasks);
     };
 
@@ -45,7 +49,14 @@ const App = () => {
     };
 
     const completeTaskHandler = taskId => {
-        setTasks(tasks => tasks.filter(task => task.id !== taskId))
+        const updatedTasks = tasks.map(task => {
+            if (task.id === taskId) {
+                return {...task, completed: true};
+            }
+            return task;
+        });
+        sortTasks(updatedTasks)
+        setTasks(updatedTasks)
     };
 
     return (
@@ -58,6 +69,6 @@ const App = () => {
             </section>
         </div>
     );
-};
+}
 
 export default App;
