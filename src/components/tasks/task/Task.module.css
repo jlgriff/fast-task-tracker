@@ -13,14 +13,21 @@
     margin-left: auto;
 }
 
-.icon {
-    cursor: pointer;
+.task img {
     height: 2em;
     margin: 1em;
     border-radius: 20px;
 }
 
-.icon:hover {
+.activeIcon {
+    cursor: pointer;
+}
+
+.activeIcon:hover {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
     transition: box-shadow 150ms linear;
+}
+
+.completed {
+    background-color: lightgray;
 }
