@@ -13,7 +13,8 @@ const TaskList = props => {
                     onDelete={props.onDelete}
                     onComplete={props.onComplete}
                     title={task.title}
-                    description={task.description}>
+                    description={task.description}
+                    priority={task.priority}>
                 </Task>
             ))}
         </ul>

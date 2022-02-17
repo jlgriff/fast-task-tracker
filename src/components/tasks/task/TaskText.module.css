@@ -9,4 +9,5 @@
 
 .description {
     display: block;
+    overflow: fragments;
 }

@@ -12,10 +12,12 @@ const TaskInput = props => {
 
     const formSubmitHandler = event => {
         event.preventDefault();
-        props.onAdd(enteredTitle, enteredDescription, enteredPriority);
-        setEnteredTitle('');
-        setEnteredDescription('');
-        setEnteredPriority(STARTING_PRIORITY)
+        if (enteredTitle.trim().length !== 0) {
+            props.onAdd(enteredTitle, enteredDescription, enteredPriority);
+            setEnteredTitle('');
+            setEnteredDescription('');
+            setEnteredPriority(STARTING_PRIORITY)
+        }
     };
 
     return (
@@ -35,7 +37,7 @@ const TaskInput = props => {
                 </div>
                 <div>
                     <label htmlFor="priority">Priority</label>
-                    <select value={STARTING_PRIORITY} id="priority" className={styles.select}
+                    <select value={enteredPriority} id="priority" className={styles.select}
                             onChange={(event) => setEnteredPriority(event.target.value)}>
                         {Object.entries(PRIORITIES).map(([key, priority]) =>
                             <option key={key}>{priority}</option>)}

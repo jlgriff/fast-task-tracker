@@ -3,6 +3,12 @@
     flex-direction: row;
 }
 
+.priority {
+    margin-top: auto;
+    margin-bottom: auto;
+    font-weight: bold;
+}
+
 .push {
     margin-left: auto;
 }

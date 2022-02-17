@@ -14,13 +14,13 @@ const Task = props => {
                     <img className={styles.icon} src={CheckmarkIcon} alt="checkmark icon"
                          onClick={() => props.onComplete(props.id)}/>
                     <TaskText title={props.title} description={props.description}/>
-                    <div className={styles.push}/>
+                    <div className={`${styles.push} ${styles.priority}`}>{props.priority}</div>
                     <img className={styles.icon} src={TrashcanIcon} alt="trashcan icon"
                          onClick={() => props.onDelete(props.id)}/>
                 </div>
             </Card>
         </li>
     );
-};
+}
 
 export default Task;
