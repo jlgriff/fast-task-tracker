@@ -4,7 +4,6 @@ import TaskList from './components/tasks/tasklist/TaskList';
 import TaskInput from './components/tasks/input/TaskInput';
 import './App.module.css';
 
-export const PRIORITIES = {veryHigh: "Very High", high: "High", average: "Average", low: "Low", veryLow: "Very Low"}
 export const STORAGE_TASKS_KEY = "tasks";
 
 const App = () => {
@@ -23,18 +22,24 @@ const App = () => {
     }, [tasks]);
 
     const sortTasks = tasks => {
-        tasks.sort((a, b) => a.completed === b.completed
-            ? b.timestamp - a.timestamp
-            : a.completed > b.completed ? 1 : -1
-        );
+        tasks.sort((a, b) => {
+            if (a.completed !== b.completed) {
+                return a.completed > b.completed ? 1 : -1
+            }
+            if (a.rank !== b.rank) {
+                return a.rank < b.rank ? 1 : -1
+            }
+            return a.timestamp < b.timestamp ? 1 : -1
+        });
     }
 
-    const addTaskHandler = (title, description, priority) => {
+    const addTaskHandler = (title, description, priority, rank) => {
         const updatedTasks = [...tasks].concat(
             {
                 title: title,
                 description: description,
                 priority: priority,
+                rank: rank,
                 completed: false,
                 timestamp: Date.now(),
                 id: Math.random().toString()

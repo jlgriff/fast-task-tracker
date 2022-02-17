@@ -15,6 +15,7 @@ const TaskList = props => {
                     title={task.title}
                     description={task.description}
                     priority={task.priority}
+                    rank={task.rank}
                     completed={task.completed}
                     timestamp={task.timestamp}>
                 </Task>

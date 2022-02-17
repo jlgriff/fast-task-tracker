@@ -2,10 +2,17 @@ import React, {useState} from 'react';
 
 import Button from '../../ui/button/Button';
 import styles from './TaskInput.module.css';
-import {PRIORITIES} from "../../../App";
+
+const PRIORITIES = {
+    veryHigh: {text: "Very High", rank: 5},
+    high: {text: "High", rank: 4},
+    average: {text: "Average", rank: 3},
+    low: {text: "Low", rank: 2},
+    veryLow: {text: "Very Low", rank: 1}
+}
+const STARTING_PRIORITY = PRIORITIES['average']['text'];
 
 const TaskInput = props => {
-    const STARTING_PRIORITY = PRIORITIES['average'];
     const [enteredTitle, setEnteredTitle] = useState('');
     const [enteredDescription, setEnteredDescription] = useState('');
     const [enteredPriority, setEnteredPriority] = useState(STARTING_PRIORITY);
@@ -13,12 +20,23 @@ const TaskInput = props => {
     const formSubmitHandler = event => {
         event.preventDefault();
         if (enteredTitle.trim().length !== 0) {
-            props.onAdd(enteredTitle, enteredDescription, enteredPriority);
+            props.onAdd(enteredTitle, enteredDescription, enteredPriority, getRankFromPriority(enteredPriority));
             setEnteredTitle('');
             setEnteredDescription('');
             setEnteredPriority(STARTING_PRIORITY)
         }
     };
+
+    const getRankFromPriority = priorityText => {
+        const priority = Object.values(PRIORITIES)
+            .find((entry) => entry['text'] === priorityText)
+        return priority['rank'];
+    }
+
+    const getPriorityDropdownOptions = () => {
+        return Object.values(PRIORITIES).map((entry) =>
+            <option key={entry['rank']}>{entry['text']}</option>)
+    }
 
     return (
         <form className={styles.container} onSubmit={formSubmitHandler}>
@@ -39,8 +57,7 @@ const TaskInput = props => {
                     <label htmlFor="priority">Priority</label>
                     <select value={enteredPriority} id="priority" className={styles.select}
                             onChange={(event) => setEnteredPriority(event.target.value)}>
-                        {Object.entries(PRIORITIES).map(([key, priority]) =>
-                            <option key={key}>{priority}</option>)}
+                        {getPriorityDropdownOptions()}
                     </select>
                 </div>
             </div>
