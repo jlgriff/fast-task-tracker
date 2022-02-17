@@ -1,18 +1,19 @@
 import React from 'react';
 
-import Task from '../task/Task';
+import Task from './Task';
 import styles from './TaskList.module.css';
 
 const TaskList = props => {
     return (
         <ul className={styles.list}>
-            {props.items.map(task => (
+            {props.tasks.map(task => (
                 <Task
                     key={task.id}
                     id={task.id}
                     onDelete={props.onDelete}
                     onComplete={props.onComplete}
-                    text={task.text}>
+                    title={task.title}
+                    description={task.description}>
                 </Task>
             ))}
         </ul>

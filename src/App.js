@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import TaskList from './components/tasks/checklist/TaskList';
+import TaskList from './components/tasks/task/TaskList';
 import TaskInput from './components/tasks/input/TaskInput';
 import './App.module.css';
 
@@ -25,13 +25,17 @@ const App = () => {
         setTasks(tasks => tasks.filter(task => task.id !== taskId))
     };
 
+    const completeTaskHandler = taskId => {
+        setTasks(tasks => tasks.filter(task => task.id !== taskId))
+    };
+
     return (
         <div>
             <section id="input">
                 <TaskInput onAdd={addTaskHandler}/>
             </section>
             <section id="tasks">
-                <TaskList items={tasks} onDelete={deleteTaskHandler}/>
+                <TaskList tasks={tasks} onDelete={deleteTaskHandler} onComplete={completeTaskHandler}/>
             </section>
         </div>
     );

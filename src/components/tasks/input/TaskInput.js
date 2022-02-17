@@ -7,7 +7,7 @@ import {PRIORITIES} from "../../../App";
 const TaskInput = props => {
     const [enteredTitle, setEnteredTitle] = useState('');
     const [enteredDescription, setEnteredDescription] = useState('');
-    const [enteredPriority, setEnteredPriority] = useState(null);
+    const [enteredPriority, setEnteredPriority] = useState(PRIORITIES['average']);
 
     const formSubmitHandler = event => {
         event.preventDefault();
@@ -19,16 +19,18 @@ const TaskInput = props => {
             <div className={styles.formControl}>
                 <div>
                     <label htmlFor="title">Title</label>
-                    <input type="text" id="title" placeholder="The task's title" onChange={setEnteredTitle}/>
+                    <input type="text" id="title" placeholder="The task's title" className={styles.input}
+                           onChange={(event) => setEnteredTitle(event.target.value)}/>
                 </div>
                 <div>
                     <label htmlFor="description">Description (optional)</label>
-                    <textarea id="description" placeholder="An optional description"
-                              onChange={setEnteredDescription}/>
+                    <textarea id="description" placeholder="An optional description" className={styles.textarea}
+                              onChange={(event) => setEnteredDescription(event.target.value)}/>
                 </div>
                 <div>
                     <label htmlFor="priority">Priority</label>
-                    <select id="priority" defaultValue={PRIORITIES['average']} onChange={setEnteredPriority}>
+                    <select id="priority" defaultValue={PRIORITIES['average']} className={styles.select}
+                            onChange={(event) => setEnteredPriority(event.target.value)}>
                         {Object.entries(PRIORITIES).map(([key, priority]) =>
                             <option key={key}>{priority}</option>)}
                     </select>
