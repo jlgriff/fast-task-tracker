@@ -14,7 +14,8 @@ const Task = props => {
                     <img className={styles.icon} src={CheckmarkIcon} alt="checkmark icon"
                          onClick={() => props.onComplete(props.id)}/>
                     <TaskText title={props.title} description={props.description}/>
-                    <img className={`${styles.icon} ${styles.push}`} src={TrashcanIcon} alt="trashcan icon"
+                    <div className={styles.push}></div>
+                    <img className={styles.icon} src={TrashcanIcon} alt="trashcan icon"
                          onClick={() => props.onDelete(props.id)}/>
                 </div>
             </Card>

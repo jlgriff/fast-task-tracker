@@ -1,11 +1,12 @@
 import React from 'react';
+import styles from './TaskText.module.css'
 
 const TaskText = props => {
     return (
-        <React.Fragment>
-            <div>{props.title}</div>
-            <div>{props.description}</div>
-        </React.Fragment>
+        <div className={styles.container}>
+            <div className={styles.title}>{props.title}</div>
+            <div className={styles.description}>{props.description}</div>
+        </div>
     );
 }
 

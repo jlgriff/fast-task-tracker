@@ -3,11 +3,6 @@
 }
 
 .formControl {
-    display: flex;
-    flex-flow: row wrap;
-}
-
-.formControl {
     font-style: italic;
     font-weight: lighter;
 }
@@ -17,14 +12,14 @@
 }
 
 .formControl div label {
-    display:block;
+    display: block;
     font-style: italic;
     font-weight: lighter;
 }
 
 .input, .textarea {
     resize: none;
-    display:inline-block;
+    display: inline-block;
     vertical-align: middle;
     font-size: inherit;
     box-sizing: border-box;
@@ -58,15 +53,10 @@
 
 .input {
     font-weight: bold;
-    width: 20em;
-}
-
-.textarea {
-    width: 30em;
 }
 
 .select {
-    display:inline-block;
+    display: inline-block;
     font-size: inherit;
     height: 60px;
     border: #E2E2ED;
@@ -76,4 +66,44 @@
     font-family: inherit;
     color: #5A5A64;
     padding: 12px 41px 12px 16px;
+}
+
+@media (max-width: 1150px) {
+    .formControl {
+        display: block;
+        width: 80%;
+        margin: auto;
+    }
+
+    .input, .textarea, .select {
+        align-content: center;
+        width: 100%;
+    }
+    .buttonContainer {
+        text-align: center;
+        width: 100%;
+    }
+    .button {
+        width: 75%;
+    }
+}
+
+@media (min-width: 1150px) {
+    .formControl {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+    }
+
+    .input {
+        width: 20em;
+    }
+
+    .textarea {
+        width: 30em;
+    }
+    .buttonContainer {
+        width: 100%;
+        margin-left: 1em;
+    }
 }

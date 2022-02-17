@@ -1,0 +1,12 @@
+.container {
+    margin: 1em;
+}
+
+.title {
+    display: block;
+    font-weight: bold;
+}
+
+.description {
+    display: block;
+}

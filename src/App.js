@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import TaskList from './components/tasks/task/TaskList';
+import TaskList from './components/tasks/tasklist/TaskList';
 import TaskInput from './components/tasks/input/TaskInput';
 import './App.module.css';
 
