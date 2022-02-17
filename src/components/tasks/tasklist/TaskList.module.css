@@ -2,6 +2,7 @@
     list-style: none;
     max-width: 1000px;
     padding: 0;
+    margin: 2em;
 }
 
 @media (max-width: 1099px) {

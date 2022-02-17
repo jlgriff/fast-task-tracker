@@ -29,5 +29,7 @@
 }
 
 .completed {
-    background-color: lightgray;
+    background-color: #0099CC;
+    color: whitesmoke;
+    transition: background-color 1000ms linear;
 }
