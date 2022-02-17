@@ -72,10 +72,6 @@
     padding: 12px 41px 12px 16px;
 }
 
-.button {
-    background-color: #007bff;
-}
-
 @media (max-width: 1099px) {
     .formControl {
         display: block;
