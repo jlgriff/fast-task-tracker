@@ -3,6 +3,8 @@
     max-width: 1000px;
     padding: 0;
     margin: 2em;
+    font-size: 20px;
+    color: #35373c;
 }
 
 @media (max-width: 1099px) {

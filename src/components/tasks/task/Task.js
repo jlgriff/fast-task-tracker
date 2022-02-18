@@ -16,10 +16,10 @@ const Task = props => {
             <Card>
                 <div className={`${styles.task} ${completed ? styles.completed : ''}`}>
                     {completed
-                        ? <img src={GrayCheckIcon}
+                        ? <img src={GreenCheckIcon}
                                alt="grayed-out checkmark icon"/>
                         : <img className={styles.activeIcon}
-                               src={GreenCheckIcon}
+                               src={GrayCheckIcon}
                                alt="checkmark icon"
                                onClick={() => props.onComplete(props.id)}/>}
                     <TaskText title={props.title} description={props.description}/>
